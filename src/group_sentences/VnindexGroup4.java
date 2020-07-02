@@ -1,0 +1,29 @@
+package group_sentences;
+
+
+import data.*;
+import pattern.*;
+import rules.*;
+
+
+/**
+ * Chỉ số Vn-index buổi sáng giảm
+ * @author Le Trong Dat.
+ */
+public class VnindexGroup4 extends Group{
+	
+	{
+		this.setTag("chỉ số Vn-index buổi sáng giảm");
+		this.setSentences("Trên thị trường chứng khoán sau đó, chỉ số VN-Index tiếp tục biến động nhẹ và đang ở quanh mức <morningPoint> điểm");
+		this.setSentences("Trong suốt cả buổi sáng, mức giá thấp nhất mà các hợp đồng chạm tới là vùng xung quanh ngưỡng <morningPoint> điểm.");
+		this.setSentences("Vn-Index nhanh chóng rơi vào vùng mất điểm và rơi xuống gần sát mức <morningPoint> điểm vào khoảng trước 10h.");
+		this.setSentences("Những diễn biến sau đó cho thấy Vn-Index vào dao động khá mạnh quanh ngưỡng <morningPoint> điểm nhưng không có động lực để thoát khỏi vùng giảm.");
+		this.setSentences("Vn-Index sau đợt đầu mất <changePointMorning> điểm và chỉ mới ghi nhận <klgd> triệu chứng khoán chuyển nhượng.");
+		this.setSentences("Vn-Index dừng phiên sáng tại <morningPoint> điểm, mất <changePointMorning> điểm.");
+		this.setSentences("Đóng cửa phiên sáng, Vn-Index giảm <changePointMorning> điểm (<percentChangeMorning>%) còn <morningPoint> điểm.");
+	}
+	@Override
+	public void init(Data data) {
+		this.myMap = (new Rule9()).applyRule(data.getVinput());
+	}
+}

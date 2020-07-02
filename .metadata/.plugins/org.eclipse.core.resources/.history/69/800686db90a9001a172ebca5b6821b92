@@ -1,0 +1,23 @@
+package group_sentences;
+
+
+import rules.*;
+import data.*;
+import pattern.*;
+
+// Nhóm câu tổng quan số mã tăng giảm
+public class VnindexGroup10 extends Group{
+	
+	{
+		this.setTag("nguyên nhân chỉ số Vn-index giảm");
+		this.setSentences("Hầu hết các gương mặt lớn mất điểm mạnh trong phiên sáng nay là nguyên nhân kéo Vn-Index xuống sâu hơn.");
+		this.setSentences("Đến giữa phiên, 2 trụ cột là MSN và BVH bị kéo xuống giá sàn khiến Vn-Index sụt mạnh.");
+		this.setSentences("Hầu hết các cổ phiếu lớn nhỏ đều giảm điểm mạnh, chỉ số Vn-Index tuột khỏi mốc <maxPoint> điểm.");
+		this.setSentences("Tại sàn TP HCM, nhiều blue-chip giảm giá mạnh với mức 1.000-2.000 đồng khiến Vn-Index đuối sức.");
+	}
+	
+	@Override
+	public void init(Data data) {
+		this.myMap = (new Rule9()).applyRule(data.getVinput());
+	}
+}

@@ -1,0 +1,24 @@
+package group_sentences;
+
+
+import data.*;
+import pattern.*;
+import rules.*;
+//khởi đầu phiên giao dịch
+public class VnindexGroup2 extends Group{
+	
+	{
+		this.setTag("chỉ số Vn-index buổi sáng tăng");
+		this.setSentences("Vn-Index khởi đầu phiên giao dịch trong không khí hứng khởi, giành được thêm <cv> điểm, tương đương <cp>%, chốt phiên giao dịch sáng ở <morningPoint> điểm."); 
+		this.setSentences("Vn-Index có khởi đầu thuận lợi trong phiên hôm nay khi tăng <cv> điểm, tương đương <cp>%, lên <morningPoint> điểm trong đợt 1.");
+		this.setSentences("Thị trường phái sinh mở cửa phiên hôm nay tăng <cv> điểm (tương đương <cp>%) lên <morningPoint> điểm ngay từ những phút đầu tiên mở cửa.");
+		this.setSentences("Nối dài tín hiệu khởi sắc trong những phiên vừa qua, mở đầu giao dịch hôm nay, Vn-Index tăng <cv> điểm, tương đương <cp>%, lên <morningPoint> điểm.");
+		this.setSentences("Sáng nay, giao dịch các loại cổ phiếu diễn ra sôi động, VN-Index tăng <cv> điểm, chốt phiên giao dịch sáng với <MorningPoint> điểm.");
+		this.setSentences("Đóng cửa phiên sáng, Vn-Index tăng <cv> điểm , tương đương <cp>% lên <morningPoint> điểm.");
+	}
+	
+	@Override
+	public void init(Data data) {
+		this.myMap = (new Rule9()).applyRule(data.getVinput());
+	}
+}

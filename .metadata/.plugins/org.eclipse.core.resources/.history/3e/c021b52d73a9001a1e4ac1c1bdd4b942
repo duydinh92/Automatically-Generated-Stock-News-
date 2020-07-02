@@ -1,0 +1,27 @@
+package rules;
+
+
+import java.util.*;
+import data.*;
+import pattern.*;
+
+
+public class Rule9 extends Rule{
+	@Override
+	public Map<String, String> applyRule(Vinput[] today) {
+		int i = 0;
+		System.out.println(today[i].getDate());
+		map.put("morningPoint", toString(today[i].getOpenPrice()));
+		map.put("cv", toString(today[i].getPointChange()));
+		map.put("klkl", toString(today[i].getCallOptionsVolume()));
+		map.put("gtkl", toString(today[i].getCallOptionsValue()));
+		map.put("klgd", toString(today[i].getPutOptionsVolume()));
+		map.put("gtgd", toString(today[i].getPutOptionsValue()));
+		map.put("minPoint", toString(today[i].getMinPrice()));
+		map.put("maxPoint", toString(today[i].getMaxPrice()));
+		map.put("closePoint", toString(today[i].getClosingPrice()));
+		map.put("date", today[i].getDate());
+		map.put("cp", toString(today[i].getPercentageChange()));
+		return map;
+	}
+}

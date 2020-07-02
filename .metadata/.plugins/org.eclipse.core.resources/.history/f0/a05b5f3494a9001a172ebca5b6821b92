@@ -1,0 +1,84 @@
+package data;
+
+import java.util.*;
+
+
+/**
+ * Gets all necessary information of VN-Index code.
+ * @author Dinh Cong Duy
+ */
+public class Vinput extends Input{
+	
+	private String date;
+	private float todayPoint; 
+	private float yesterdayPoint; 
+	private float minPrice;
+	private float maxPrice;
+	private float openPrice;
+	
+	/* Constructor */
+	public Vinput() {
+	
+	}
+	
+	public Vinput(String date, float referencePrice, float closingPrice,
+				  int callOptionsVolume, int callOptionsValue, 
+				  int putOptionsVolume , int putOptionsValue,
+				  float maxPrice, float minPrice, float openPrice) {
+		super("VN-Index", referencePrice, closingPrice, callOptionsVolume, 
+			  callOptionsValue, putOptionsVolume, putOptionsValue);
+		this.date 			= date;
+		this.todayPoint 	= closingPrice;
+		this.yesterdayPoint = referencePrice;
+		this.maxPrice 		= maxPrice;
+		this.minPrice 		= minPrice;
+		this.openPrice		= openPrice;
+	}
+
+	
+	/* Getters */
+	public String getDate() {
+		return date;
+	}
+
+	public float getTodayPoint() {
+		return todayPoint;
+	}
+
+	public float getYesterdayPoint() {
+		return yesterdayPoint;
+	}
+	
+	public float getPointChange() {
+		return getTodayPoint() - getYesterdayPoint();
+	}
+	
+	public int getMinPrice() {
+		return (int) (minPrice * 1000);
+	}
+	
+	public int getMaxPrice() {
+		return (int) (maxPrice * 1000);
+	}
+	
+	public int getOpenPrice() {
+		return (int) (openPrice * 1000);
+	}
+	
+	/**
+	 * @param date   	The date is wanted to take the information
+	 * @param vinputs  	VN-Index input data
+	 * @return VN-Index array of yesterday and today
+	 */
+	public static Vinput[] todays(String date, List<Vinput> vinputs) {
+		Vinput[] result = new Vinput[2];
+		for(int i = 0; i < vinputs.size()-1; i++) {
+			if(vinputs.get(i).getDate().equals(date)) {
+				result[0] = vinputs.get(i);
+				result[1] = vinputs.get(i+1);
+				break;
+			}
+		}
+		return result;
+	}
+}	

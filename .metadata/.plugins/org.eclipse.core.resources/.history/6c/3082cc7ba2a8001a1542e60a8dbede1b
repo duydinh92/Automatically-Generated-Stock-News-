@@ -1,0 +1,22 @@
+package main;
+
+
+import java.util.*;
+import csvparsers.*;
+import data.*;
+import gui.OOP;
+import pattern.*;
+
+
+public class Run {
+	public static void run() {
+		String date = OOP.getDay();
+		String path1 = "C:\\Users\\Phong Vu\\eclipse-workspace\\Project\\data\\"+ date.replace("/", "-") + ".csv";
+		List<Input> inputs = (ArrayList<Input>) ReadFile.readInput(path1);
+		String path2 = "C:\\Users\\Phong Vu\\eclipse-workspace\\Project\\data\\Vn-Index.csv";
+		Vinput[] todays = Vinput.todays(date, (ArrayList<Vinput>) ReadFile.readVinput(path2));
+		Data data = new Data(inputs,todays);
+		Output.printPaper(data);
+		
+	}
+}

@@ -1,0 +1,22 @@
+package group_sentences;
+
+
+import data.*;
+import pattern.*;
+import rules.*;
+//chốt phiên sáng
+public class VnindexGroup3 extends Group{
+	
+	{
+		this.setTag("chỉ số Vn-index sáng giảm");
+		this.setSentences("Đến hết phiên giao dịch sáng, 2 sàn chứng khoán không có nhiều câu chuyện lớn để nói khi mà "
+				+ "thị trường vẫn lình xình đi ngang trong biên độ hẹp.");
+		this.setSentences("Thị trường tiếp tục giữ xu hướng \"xanh vỏ, đỏ lòng\" khi các chỉ số chính giằng co gần tham chiếu"
+				+ " nhưng sắc đỏ chiếm áp đảo trên thị trường.");
+	}
+	
+	@Override
+	public void init(Data data) {
+		this.myMap = (new Rule9()).applyRule(data.getVinput());
+	}
+}

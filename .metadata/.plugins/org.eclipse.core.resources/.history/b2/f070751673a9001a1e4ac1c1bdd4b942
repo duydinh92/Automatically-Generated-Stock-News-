@@ -1,0 +1,113 @@
+package pattern;
+
+
+import java.util.*;
+
+import gui.OOP;
+import data.*;
+import group_sentences.*;
+
+
+/**
+ * Contains methods to adjust, print the final result about the data input.
+ * @author Dinh Cong Duy
+ */
+public class Output {
+	public static String text = "";
+	
+	public static List<Group> groupList(){
+		List<Group> list = new ArrayList<Group>();
+		list.add(new VnindexGroup12());
+		list.add(new VnindexGroup13());
+		list.add(new VnindexGroup14());
+		list.add(new VnindexGroup11());
+//		list.add(new VindexGroup5());
+//		list.add(new VindexGroup6());
+//		list.add(new VindexGroup7());
+//		list.add(new VindexGroup8());
+//		list.add(new VindexGroup9());
+//		list.add(new VindexGroup10());
+//		list.add(new VindexGroup11());
+		list.add(new Group1_0());
+		list.add(new Group1_1());
+		list.add(new Group1_2());
+		list.add(new Group2_0());
+		list.add(new Group3_0());
+		list.add(new Group3_1());
+		list.add(new Group4_0());
+		list.add(new Group5_0());
+		list.add(new Group6_0());
+		list.add(new Group6_1());
+		list.add(new Group6_2());
+		list.add(new Group6_3());
+		list.add(new Group6_4());
+		list.add(new Group7_0());
+		list.add(new Group8_0());
+		list.add(new Group8_1());
+		list.add(new Group8_2());
+		list.add(new Group8_3());
+		list.add(new Group8_4());
+		list.add(new Group8_5());
+		return list;
+	}
+	
+	public static List<Group> choosenGroupList(List<String> choosenTags){
+		List<Group> choosenGroupList = new ArrayList<>();
+		for(Group each : groupList()){
+			if(choosenTags.contains(each.getTag())){
+				choosenGroupList.add(each);
+			}
+		}
+		return choosenGroupList;
+	}
+	/**
+	 * Return a template contains all sentences wanted to print out.
+	 * @param groupList All group sentence wanted to print out.
+	 * @param inputs Input data of all codes.
+	 * @param todays Input VN-Index data
+	 */
+	private static String buildTemplate(List<Group> choosenGroupList, Data data) {
+		StringBuilder template = new StringBuilder();
+		choosenGroupList.forEach( group ->{
+			System.out.println(group.getTag());
+			group.init(data);
+			template.append(group.getOutput()+"\n\n");
+			//template.append(group.getOutput()+" ");
+		});
+		return template.toString();
+	}
+	
+	/**
+	 * Print a string with choosen line width.
+	 * @param s 		A String needs to be printed.
+	 * @param lineWidth Desire line width wants to print. 
+	 */
+	
+	private static void printOut(String s, int lineWidth){
+		int charsWritten = 0;
+		for(String w : s.split("\\s+")){
+			if (charsWritten + w.length() > lineWidth){
+				text = text + "\n";
+				charsWritten = 0;
+			}
+			text = text + w + " ";
+			charsWritten += w.length() + 1;
+
+		}
+		text = text + "\n\n";
+	}
+	
+	/**
+	 * Print the paper contains all desire information about the input data.
+	 * @param inputs Input data of all stock codes.
+	 * @param todays VN-Index input data.
+	 */
+	public static void printPaper(Data data) {
+		String template = buildTemplate(choosenGroupList(OOP.choosenList), data);
+		String[] sentences = template.split("\n\n");
+		for(String sentence : sentences) {
+			printOut(sentence, 110);
+			System.out.println("\n\n");
+		}
+	}
+}
